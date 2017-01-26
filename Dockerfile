@@ -12,13 +12,14 @@ RUN echo debconf shared/accepted-oracle-license-v1-1 select true | debconf-set-s
  && echo debconf shared/accepted-oracle-license-v1-1 seen true | debconf-set-selections \
  && apt-get update && apt-get -y install oracle-java7-installer
 
-#  install Tomcat
+# Install Tomcat
 RUN mkdir -p /opt/tomcat \
  && curl -SL http://apache.fastbull.org/tomcat/tomcat-7/v7.0.59/bin/apache-tomcat-7.0.59.tar.gz \
  | tar -xzC /opt/tomcat --strip-components=1 \
  && rm -Rf /opt/tomcat/webapps/docs /opt/tomcat/webapps/examples
 
 COPY file/tomcat7/tomcat-users.xml /opt/tomcat/conf/
+COPY libs/mysql-connector-java-5.1.40-bin.jar /opt/tomcat/lib/
 
 # Expose tomcat
 EXPOSE 8080
