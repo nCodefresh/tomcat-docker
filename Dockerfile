@@ -14,7 +14,7 @@ RUN echo debconf shared/accepted-oracle-license-v1-1 select true | debconf-set-s
 
 # Install Tomcat
 RUN mkdir -p /opt/tomcat \
- && curl -SL http://apache.fastbull.org/tomcat/tomcat-7/v7.0.59/bin/apache-tomcat-7.0.59.tar.gz \
+ && curl -SL http://ftp.byfly.by/pub/apache.org/tomcat/tomcat-7/v7.0.75/bin/apache-tomcat-7.0.75.tar.gz \
  | tar -xzC /opt/tomcat --strip-components=1 \
  && rm -Rf /opt/tomcat/webapps/docs /opt/tomcat/webapps/examples
 
